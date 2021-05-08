@@ -1,7 +1,7 @@
 class CreateEpisodes < ActiveRecord::Migration[6.1]
   def change
-    create_table :episodes, id: false, primary_key: 'guid'  do |t|
-      t.text :guid, null: false
+    create_table :episodes, id: false do |t|
+      t.text :guid, null: false, primary_key: true
       t.text :itunes_season, null: false
       t.text :itunes_episode, null: false
       t.text :publised_date

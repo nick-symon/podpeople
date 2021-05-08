@@ -1,7 +1,7 @@
 class CreatePodcasts < ActiveRecord::Migration[6.1]
   def change
-    create_table :podcasts, id: false, primary_key: 'id' do |t|
-      t.text :id, null: false 
+    create_table :podcasts, id: false  do |t|
+      t.text :id, null: false, primary_key: true
       t.text :subtitle, null: false 
       t.text :rss_feed_link, null: false 
       t.text :link, null: false 

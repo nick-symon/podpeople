@@ -15,8 +15,7 @@ ActiveRecord::Schema.define(version: 2021_05_08_180800) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "episodes", id: false, force: :cascade do |t|
-    t.text "guid", null: false
+  create_table "episodes", primary_key: "guid", id: :text, force: :cascade do |t|
     t.text "itunes_season", null: false
     t.text "itunes_episode", null: false
     t.text "publised_date"
@@ -35,8 +34,7 @@ ActiveRecord::Schema.define(version: 2021_05_08_180800) do
     t.index ["guid"], name: "index_episodes_on_guid", unique: true
   end
 
-  create_table "podcasts", id: false, force: :cascade do |t|
-    t.text "id", null: false
+  create_table "podcasts", id: :text, force: :cascade do |t|
     t.text "subtitle", null: false
     t.text "rss_feed_link", null: false
     t.text "link", null: false
