@@ -14,6 +14,8 @@ class CreateEpisodes < ActiveRecord::Migration[6.1]
       t.text :itunes_summary, null: false
       t.text :itunes_subtitle, null: false
       t.text :slug, null: false
+      t.text :podcast_id, null: false
+      t.index :guid, unique: true
       t.timestamps
     end
   end

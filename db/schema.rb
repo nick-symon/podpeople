@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_08_175131) do
+ActiveRecord::Schema.define(version: 2021_05_08_180800) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,8 +29,10 @@ ActiveRecord::Schema.define(version: 2021_05_08_175131) do
     t.text "itunes_summary", null: false
     t.text "itunes_subtitle", null: false
     t.text "slug", null: false
+    t.text "podcast_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["guid"], name: "index_episodes_on_guid", unique: true
   end
 
   create_table "podcasts", id: false, force: :cascade do |t|
@@ -52,6 +54,9 @@ ActiveRecord::Schema.define(version: 2021_05_08_175131) do
     t.text "pub_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["id"], name: "index_podcasts_on_id", unique: true
+    t.index ["rss_feed_link"], name: "index_podcasts_on_rss_feed_link", unique: true
   end
 
+  add_foreign_key "episodes", "podcasts"
 end

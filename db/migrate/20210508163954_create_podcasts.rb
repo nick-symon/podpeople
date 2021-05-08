@@ -17,6 +17,8 @@ class CreatePodcasts < ActiveRecord::Migration[6.1]
       t.text :itunes_subtitle, null: false
       t.text :itunes_summary, null: false
       t.text :pub_date
+      t.index :id, unique: true
+      t.index :rss_feed_link, unique: true
       t.timestamps
     end
   end
