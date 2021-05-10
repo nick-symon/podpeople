@@ -1,5 +1,15 @@
-<h1>Welcome to Pod People!!!</h1>
-<p>Pod People is the best way to find out where to start when discovering new podcasts!</p>
-<p>
-Pod People covers <%= @podcast_count %> of the most popular Podcasts in the iTunes directory, with  <%= @episode_count %> episodes and counting!
-</p>
+<div className="front-page-hero">
+  <h1 className="front-page-hero-header front-page-hero-header-top">
+    This is 
+  </h1>
+  <h1 className="front-page-hero-header front-page-hero-header-bottom">
+    POD PEOPLE
+  </h1>
+</div>
+<div className="front-page-description">
+  <p className="front-page-description-paragraph">Pod People is the best way to find out where to start
+  when discovering new podcasts!</p>
+  <p className="front-page-description-paragraph">Pod People covers <mark><b><%= @podcast_count %></b></mark> of the most popular Podcasts in the iTunes directory,
+  with <mark><b><%= @episode_count %></b></mark> episodes and counting!</p>
+  <p className="front-page-description-paragraph">Begin by using the search bar up there &#9757; to find your favorite podcasts and episodes!</p>
+</div>
