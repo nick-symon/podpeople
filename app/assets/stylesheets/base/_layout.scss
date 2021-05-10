@@ -1,0 +1,23 @@
+.container {
+    display: grid;
+    grid-template-columns: minmax(3rem, 1fr) [center-start] repeat(4,minmax(min-content, 35rem)) [center-end] minmax(3rem, 1fr);
+    grid-auto-rows: min-content;
+}
+
+.content {
+    grid-column: center-start /center-end;
+    margin-top: 8rem;
+    padding-bottom: 2rem;
+}
+
+.footer{
+    &__container{
+        grid-column: 1/-1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 10vh;
+        font-weight: 100;
+        background-color: $color-background-dark;
+    }
+}
