@@ -1,0 +1,16 @@
+.searchbar {
+  &__button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    margin-left: .5rem;
+  }
+
+  &__icon {
+    height: 2.5rem;
+    width: 2.5rem;
+    transform: scale(.7);
+    fill: gray;
+    transition: all .5s;
+  }
+}
