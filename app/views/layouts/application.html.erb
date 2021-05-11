@@ -15,16 +15,16 @@
 
   <body class="container">
     
-    <header class="header">
-      <%= render partial:"layouts/header" %>
+    <header class="header__container">
+      <%= render partial:"shared/header" %>
     </header>
     
-    <main class="content">
+    <main class="content__container">
       <%= yield %>
     </main>
 
-    <footer class="footer">
-      <%= render partial:"layouts/footer" %>
+    <footer class="footer__container">
+      <%= render partial:"shared/footer" %>
     </footer> 
     
   </body>

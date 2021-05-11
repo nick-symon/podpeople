@@ -4,19 +4,22 @@
     grid-template-rows: [header-start] min-content [header-end] [content-start] 1fr [content-end] [footer-start] min-content[footer-end];
 }
 
-.header {
+.header__container {
     grid-column: 1/-1;
-    grid-row: 1/2
+    grid-row: 1/2;
+
+    display: flex;
+    justify-content: space-between;
 }
 
-.content {
+.content__container {
     grid-column: center-start /center-end;
     grid-row: 2/3;
     margin-top: 8rem;
     padding-bottom: 2rem;
 }
 
-.footer{
+.footer__container {
     grid-column: 1/-1;
     // grid-row: footer-start /footer-end;
     grid-row: 3/4;

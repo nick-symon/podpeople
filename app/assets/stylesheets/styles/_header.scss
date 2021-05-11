@@ -1,0 +1,10 @@
+.header {
+  &__logo {
+    width: 13rem;
+    height: auto;
+
+    & g {
+        fill: $color-signature;
+    }
+  }
+}

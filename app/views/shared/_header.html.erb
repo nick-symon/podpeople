@@ -1,0 +1,21 @@
+<%# anchor link %>
+<%= link_to root_path do %>
+  <%= image_tag 'podlogo.svg', class: "header__logo" %>
+<% end %>
+
+<%# search form partial %>
+<%= render 'shared/search-bar' %>
+
+<%# login links %>
+<ul class="header__list">
+  <li class="header__list-item">
+  Profile
+  </li>
+  <li class="header__list-item">
+  Login
+  </li>
+  <li class="header__list-item">
+  Register
+  </li>
+
+</ul>
