@@ -13,12 +13,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
   </head>
 
-  <body>
-    <div class="container">
-        <%= render partial:"layouts/header" %>
-        <main class="content">
-          <%= yield %>
-        </main>
-    </div>
+  <body class="container">
+    
+    <header class="header">
+      <%= render partial:"layouts/header" %>
+    </header>
+    
+    <main class="content">
+      <%= yield %>
+    </main>
+
+    <footer class="footer">
+      <%= render partial:"layouts/footer" %>
+    </footer> 
+    
   </body>
 </html>
