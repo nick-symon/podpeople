@@ -1,6 +1,7 @@
 <%# anchor link %>
 <%= link_to root_path do %>
-  <%= image_tag 'podlogo.svg', class: "header__logo" %>
+  <%# <%= image_tag 'podlogo.svg', class: "header__logo" %> 
+  <%= inline_svg_tag "podlogo.svg", class: "header__logo" %>
 <% end %>
 
 <%# search form partial %>
