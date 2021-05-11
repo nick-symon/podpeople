@@ -7,9 +7,6 @@
 .header__container {
     grid-column: 1/-1;
     grid-row: header-start/ header-end;
-
-    display: flex;
-    justify-content: space-between;
 }
 
 .content__container {
@@ -23,13 +20,13 @@
     grid-column: 1/-1;
     grid-row: footer-start /footer-end;
 
-    &__container{
-        grid-column: 1/-1;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 10vh;
-        font-weight: 100;
-        background-color: $color-background-dark;
-    }
+    // &__container{
+    //     grid-column: 1/-1;
+    //     display: flex;
+    //     justify-content: center;
+    //     align-items: center;
+    //     height: 10vh;
+    //     font-weight: 100;
+    //     background-color: $color-background-dark;
+    // }
 }
