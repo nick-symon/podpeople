@@ -1,4 +1,45 @@
 .searchbar {
+  &__container{
+    background-color: $color-light-gray-1;
+    border-radius: 8rem;
+    padding-top: .2rem;
+    padding-bottom: .2rem;
+    padding-left: .5rem;
+    padding-right: 1rem;
+    flex: 0 1 43rem;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.4);
+  }
+
+  &__form {        
+    display: flex;
+    align-items: center;
+  }
+
+  &__input {
+    font-family: inherit;
+    font-size: inherit;
+    color: black;
+    background-color: transparent;
+    border: none;
+    padding: .5rem 1rem;
+    flex: 0 1 30rem;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:focus ~ button svg.searchbar__icon {
+      transform: scale(1);
+      fill: black;
+
+    }
+    
+    &::-webkit-search-cancel-button {
+      cursor: pointer;
+      margin-left: 1rem;
+    }
+  }
+
   &__button {
     border: none;
     background-color: transparent;

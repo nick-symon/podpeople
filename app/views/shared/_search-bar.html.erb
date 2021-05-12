@@ -1,6 +1,6 @@
 <div class="searchbar__container">
   <%= form_with url: "/podcasts" , method: :get, class: "searchbar__form" do |form|  %>
-    <%= form.search_field :query %>
+    <%= form.search_field :query, placeholder: "Search", class:"searchbar__input" %>
     <button type="submit" class="searchbar__button">
     <%= inline_svg_tag "svg/search.svg", class: "searchbar__icon" %>
     </button>

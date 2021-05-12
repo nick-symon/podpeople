@@ -1,6 +1,7 @@
 .header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   background: rgba(32,32,38,.8);
 
   &__logo {
