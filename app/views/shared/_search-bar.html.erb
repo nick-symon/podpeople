@@ -2,10 +2,7 @@
   <%= form_with url: "/podcasts" , method: :get, class: "searchbar__form" do |form|  %>
     <%= form.search_field :query %>
     <button type="submit" class="searchbar__button">
-      <%# <%= inline_svg_tag "symbol-defs.svg#icon-search", class:"searchbar__icon" %> 
-     <svg class="searchbar__icon">
-    <use href="assets/images/symbol-defs.svg#icon-search"></use> 
-     </svg> 
+    <%= inline_svg_tag "svg/search.svg", class: "searchbar__icon" %>
     </button>
   <% end %>
 </div>
