@@ -5,6 +5,6 @@ class Podcast < ApplicationRecord
   validates :rss_feed_link, uniqueness: true
 
   def self.search(query)
-    podcasts = Podcast.where("title LIKE ?", "%#{query}%")
+    podcasts = Podcast.where("title ILIKE ?", "%#{query}%")
   end
 end

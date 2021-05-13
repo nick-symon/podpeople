@@ -1,0 +1,6 @@
+<div class="podcasts__card-container">
+  <%=  link_to podcast_path(podcast)  do %> 
+    <img src= <%= podcast.image_url %> alt=<%= podcast.title %> className="podcasts__card-img" height="120" width="120" loading="lazy"/>
+  <% end %>
+  <h2><%= podcast.title %></h2>
+</div>
