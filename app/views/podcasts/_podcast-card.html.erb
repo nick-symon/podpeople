@@ -1,6 +1,19 @@
-<div class="podcasts__card-container">
+<div class="podcasts-card__container">
   <%=  link_to podcast_path(podcast)  do %> 
-    <img src= <%= podcast.image_url %> alt=<%= podcast.title %> className="podcasts__card-img" height="120" width="120" loading="lazy"/>
+    <img src= <%= podcast.image_url %> alt=<%= podcast.title %> className="podcasts-card__img" height="120" width="120" loading="lazy"/>
   <% end %>
-  <h2><%= podcast.title %></h2>
+ <div class="podcasts-card__detail">
+  <%=  link_to podcast_path(podcast), class: "podcasts-card__title-link" do %> 
+    <h4 class="podcasts-card__title"><%= podcast.title %></h4>
+  <% end %>
+    <div class="podcasts-card__icon-container">
+        <div class="podcasts-card__star-icon-group">
+        </div>
+        <div class="podcasts-card__favorite-icon-group">
+        </div>
+        <div class="podcasts-card__list-icon-group">
+        </div>
+    </div>
+  <h2></h2>
+ </div> 
 </div>

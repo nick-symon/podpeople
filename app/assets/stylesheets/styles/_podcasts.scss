@@ -1,0 +1,50 @@
+// Place all the styles related to the Podcasts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.podcasts {
+  &-card {
+    &__container {
+      display: grid;
+      grid-template-rows: min-content min-content;
+      grid-template-columns: min-content minmax(min-content, 1fr);
+      max-width: 120rem;
+      margin-bottom: 2rem;
+      border: 1px solid rgba($color-light-gray-1, .5);
+      border-radius: 10px;
+      background-color: $color-light-gray-1;
+    }
+
+    &__detail {
+      grid-row: 1/2;
+      grid-column: 2/3;
+      padding: 1rem;
+    }
+
+    &__title {
+      text-decoration: none;
+      color: black;
+      font-family: $font-display;
+      font-weight: 900;
+      font-size: 2.2rem;
+
+      &:hover{
+          color: $color-blue-1;
+      }
+
+    }
+
+    &__title-link {
+        &:link {
+            text-decoration: none;
+        }
+    }
+
+    &__img {
+      grid-row: 1/2;
+      grid-column: 1/2;
+      padding: 1rem;
+      box-sizing: content-box;
+    }
+  }  
+}
