@@ -1,0 +1,79 @@
+.welcome {
+  &__hero {
+    text-align: center;
+    height: 100vh;
+
+    &-header {
+      font-family: $font-display;
+      font-size: 10rem;
+      color: rgb(161, 245, 26);
+      opacity: 0;
+      text-shadow: 4px 7px 1px rgba(black, .8);
+
+      &-top {
+        animation: moveInLeft 3s linear;
+      }
+
+      &-bottom{
+        font-size: 15rem;
+        animation: moveInRight 6s linear;
+        letter-spacing: 1.5rem;
+      }  
+    }
+  }
+
+  &__description {
+    text-align: center;
+    font-family: $font-display;
+    font-size: 3rem;
+    height: 70vh;
+    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &-paragraph{
+        margin-bottom: 10rem;
+    } 
+  }
+
+  @keyframes moveInLeft {
+    0% {
+      opacity: 0;
+      transform: translateX(-100px);
+    }
+    75% {
+      opacity: 1;
+      transform: translate(0);
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes moveInRight {
+    0% {
+      opacity: 0;
+      transform: translateX(100px);
+    }
+
+    50% {
+      opacity: 0;
+      transform: translateX(100px);
+    }
+
+    65% {
+      opacity: 1;
+      transform: translate(0);
+    }
+    
+    80%{
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 0;
+    }
+  }
+}  

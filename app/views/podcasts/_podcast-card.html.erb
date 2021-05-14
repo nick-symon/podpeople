@@ -7,6 +7,7 @@
       <h4 class="podcasts-card__title"><%= podcast.title %></h4>
     <% end %>
     <div class="podcasts-card__icon-container">
+      <%# perhaps put all of this in a separate partial %>
       <div class="podcasts-card__star-icon-group">
       </div>
       <div class="podcasts-card__favorite-icon-group">
@@ -18,8 +19,11 @@
       <%= podcast.description || podcast.itunes_summary %>
     </p> 
     <div class="podcasts-card__footer">
-      <div class="podcasts-card__genre-container"></div>
+      <div class="podcasts-card__genre-container">
+      <%# render partial 'genres' %>
+      </div>
       <div class="podcasts-card__button-container"></div>
+      <%# render partial 'buttons' %>
     </div> 
  </div> 
 </div>
