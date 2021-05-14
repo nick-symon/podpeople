@@ -1,6 +1,8 @@
 class PodcastsController < ApplicationController
   def index
-    @podcasts = Podcast.search(params[:query])
+    query = params[:query]
+    @query = query if query
+    @podcasts = Podcast.search(query)
   end
 
 end

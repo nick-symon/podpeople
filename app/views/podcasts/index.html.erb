@@ -1,3 +1,12 @@
+<div class="">
+  <% if @podcasts.empty? %>
+  <h2 class="">Sorry, no results found!</h2>
+  <% else %>
+  <h2><%= "Search results for: #{@query}" %></h2>
+  <p><%= "#{@podcasts.count} results found" %></p>
+  <% end %>
+</div>
+
 <% @podcasts.each do |podcast| %>
   <%= render partial: "podcast-card", locals: {podcast: podcast} %>
 <% end %>

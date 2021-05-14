@@ -1,19 +1,25 @@
 <div class="podcasts-card__container">
   <%=  link_to podcast_path(podcast)  do %> 
-    <img src= <%= podcast.image_url %> alt=<%= podcast.title %> className="podcasts-card__img" height="120" width="120" loading="lazy"/>
+    <img src= <%= podcast.image_url %> alt=<%= podcast.title %> class="podcasts-card__img" height="120" width="120" loading="lazy"/>
   <% end %>
  <div class="podcasts-card__detail">
-  <%=  link_to podcast_path(podcast), class: "podcasts-card__title-link" do %> 
-    <h4 class="podcasts-card__title"><%= podcast.title %></h4>
-  <% end %>
+    <%=  link_to podcast_path(podcast), class: "podcasts-card__title-link" do %> 
+      <h4 class="podcasts-card__title"><%= podcast.title %></h4>
+    <% end %>
     <div class="podcasts-card__icon-container">
-        <div class="podcasts-card__star-icon-group">
-        </div>
-        <div class="podcasts-card__favorite-icon-group">
-        </div>
-        <div class="podcasts-card__list-icon-group">
-        </div>
-    </div>
-  <h2></h2>
+      <div class="podcasts-card__star-icon-group">
+      </div>
+      <div class="podcasts-card__favorite-icon-group">
+      </div>
+      <div class="podcasts-card__list-icon-group">
+      </div>
+      </div>
+    <p class="podcasts-card__paragraph">
+      <%= podcast.description || podcast.itunes_summary %>
+    </p> 
+    <div class="podcasts-card__footer">
+      <div class="podcasts-card__genre-container"></div>
+      <div class="podcasts-card__button-container"></div>
+    </div> 
  </div> 
 </div>

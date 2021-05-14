@@ -46,5 +46,11 @@
       padding: 1rem;
       box-sizing: content-box;
     }
+
+    &__paragraph {
+      color: black;
+      font-family: $font-primary;
+      font-size: 1.3rem;
+    }
   }  
 }
