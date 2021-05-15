@@ -1,0 +1,16 @@
+<div class="podcast-detail__container">
+  <%= link_to podcast.link do %> 
+    <%= image_tag(podcast.image_url, alt: podcast.image_title, class:"podcast-detail__img", size:"175x175", loading: "lazy") %>
+  <% end %>
+  <h1 class="podcast-detail__header">
+    <%= podcast.title %>
+  </h1>
+  <p>
+    <%= "by #{podcast.author_name}" %>
+  </p>
+  <ul class="podcast-detail__genre-list">
+  </ul>
+  <p class="podcast-detail__description">
+    <%= podcast.description %>
+  </p>
+</div>

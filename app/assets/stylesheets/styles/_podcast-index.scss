@@ -1,0 +1,18 @@
+.podcast-index {
+  &__container {
+    display:grid;
+    grid-template-columns: 1fr 20rem;
+
+    &-main {
+      grid-row: 1/-1;
+      grid-column: 1/2;
+    }
+
+    &-sidebar {
+      grid-row: 1/-1;
+      grid-column: 2/3;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}

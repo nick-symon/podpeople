@@ -1,6 +1,6 @@
 <div class="podcasts-card__container">
   <%=  link_to podcast_path(podcast)  do %> 
-    <img src= <%= podcast.image_url %> alt=<%= podcast.title %> class="podcasts-card__img" height="120" width="120" loading="lazy"/>
+    <%= image_tag(podcast.image_url, alt: podcast.title, class:"podcasts-card__img", size:"120x120", loading: "lazy") %>
   <% end %>
  <div class="podcasts-card__detail">
     <%=  link_to podcast_path(podcast), class: "podcasts-card__title-link" do %> 

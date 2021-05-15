@@ -5,4 +5,12 @@ class PodcastsController < ApplicationController
     @podcasts = Podcast.search(query)
   end
 
+  def show 
+    # update and eager load addt'l associations on pcast
+    @podcast = Podcast.includes(:episodes).find(params[:id])
+    # add addt'l instance variables for addt'l associations
+    @episodes = @podcast.episodes
+    
+  end
+
 end

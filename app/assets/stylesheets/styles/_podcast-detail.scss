@@ -1,0 +1,20 @@
+.podcast-detail {
+  // &__container {
+
+  // }
+  &__img {
+    float: left;
+    margin-right: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  &__header {
+    font-family: $font-display;
+  }
+  
+  &__description {
+    clear: left;
+    font-weight: 300;
+    font-size: 1.7rem;
+  }
+}
