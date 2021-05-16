@@ -1,0 +1,12 @@
+<div class="episode-card__container">
+  <%=  link_to podcast_path(podcast), class: "episode-card__img"  do %> 
+    <%= image_tag(podcast.image_url, alt: podcast.title, class:"episode-card__img", size:"110x110", loading: "lazy") %>
+  <% end %>
+  <div class="episode-card__header-container">
+    <p class="episode-card__title"><%= episode.title %></p>
+    <div class="episode-card__date-container">
+      <%# put the date here, use helper %>
+    </div>
+  </div>
+  <p class="episode-card__description"><%= episode.description %></p>
+</div>

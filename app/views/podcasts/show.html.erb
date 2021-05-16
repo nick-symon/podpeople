@@ -1,3 +1,18 @@
 <div class="podcast-index__container">
-  <%= render partial: "podcast-detail", locals: {podcast: @podcast} %>
+  <div class="podcast-index__container-main">
+    <%= render partial: "podcast-detail", locals: {podcast: @podcast} %>
+    <ul class="podcast-index__nav-list">
+      <li class="podcast-index__nav-list-item">Episodes</li>
+      <li class="podcast-index__nav-list-item">Reviews</li>
+    </ul>
+    
+    <%# Below is where we render all of the associated content (eps, reviews) %>
+    <%# Everything gets rendered, then we switch visibility using the nav buttons %>
+    <% @episodes.each do |e| %>
+    <%= render partial: 'episodes/episode-card', locals: {episode: e, podcast: @podcast } %>
+    <% end %>
+    
+    <%# do same thing for reviews  %>
+
+  </div>
 </div>
