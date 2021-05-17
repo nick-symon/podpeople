@@ -5,7 +5,14 @@
   <div class="episode-card__header-container">
     <p class="episode-card__title"><%= episode.title %></p>
     <div class="episode-card__date-container">
-      <%# put the date here, use helper %>
+      <%= inline_svg_tag "svg/watch_later", class: "episode-card__date-icon" %>
+      <p class="episode-card__date-text">
+      <%= format_published_date(episode.published_date) %>
+      </p>
+      <%= inline_svg_tag "svg/hourglass_bottom", class: "episode-card__date-icon" %>
+      <p class="episode-card__date-text">
+      <%# add durtation helper here %>
+      </p>
     </div>
   </div>
   <p class="episode-card__description"><%= episode.description %></p>
