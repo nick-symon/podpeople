@@ -6,18 +6,18 @@
 
 .header__container {
     grid-column: 1/-1;
-    grid-row: header-start/ header-end;
+    grid-row: header-start / header-end;
 }
 
 .content__container {
-    grid-column: center-start /center-end;
-    grid-row: content-start/content-end;
+    grid-column: center-start / center-end;
+    grid-row: content-start / content-end;
     padding-bottom: 2rem;
 }
 
 .footer__container {
     grid-column: 1/-1;
-    grid-row: footer-start /footer-end;
+    grid-row: footer-start / footer-end;
 
     // &__container{
     //     grid-column: 1/-1;
