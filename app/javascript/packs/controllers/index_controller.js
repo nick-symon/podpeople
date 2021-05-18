@@ -5,6 +5,12 @@ export default class extends Controller {
   static values = {current: Number, total: Number, url: String}
   
   loadMore(){
-    console.log(this.currentValue, this.totalValue, this.urlValue)
+    if (this.currentValue < this.totalValue) {
+      this.currentValue++
+      let url = this.urlValue.slice(0,-1)+this.currentValue
+      fetch(url)
+        .then(response => response.text())
+        .then(html => console.log(html))
+    }
   }
 }
