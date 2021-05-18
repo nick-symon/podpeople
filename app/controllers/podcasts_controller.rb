@@ -3,6 +3,14 @@ class PodcastsController < ApplicationController
     query = params[:query]
     @query = query if query
     @pagy, @podcasts = pagy Podcast.search(query)
+
+    respond_to do |format|
+      format.html
+      format.js
+      format.json {
+        render json: {html: render_to_string(partial: 'podcast-list', formats: [:html])}
+      }
+    end
   end
 
   def show 

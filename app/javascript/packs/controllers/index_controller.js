@@ -1,4 +1,5 @@
 import { Controller } from "stimulus"
+import Rails from "@rails/ujs";
 
 export default class extends Controller {
   static targets = ["container", "button"]
@@ -8,9 +9,14 @@ export default class extends Controller {
     if (this.currentValue < this.totalValue) {
       this.currentValue++
       let url = this.urlValue.slice(0,-1)+this.currentValue
-      fetch(url)
-        .then(response => response.text())
-        .then(html => console.log(html))
+      Rails.ajax({
+        url: url,
+        type: "get",
+        dataType: "json",
+        success: (data) => {
+          console.log(data)
+        }
+      })
     }
   }
 }
