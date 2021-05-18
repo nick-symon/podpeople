@@ -11,6 +11,14 @@
   <% @podcasts.each do |podcast| %>
     <%= render partial: "podcast-card", locals: {podcast: podcast} %>
   <% end %>
-  <%== pagy_nav @pagy %>
-  <button data-action="click->index#loadMore" data-index-target="button">Load More!</button>
+
 </div>
+  <button 
+    data-controller="index"
+    data-action="index#loadMore" 
+    data-index-target="button"
+    data-index-current-value="1"
+    data-index-total-value=<%= @pagy.pages %>
+    data-index-url-value=<%= pagy_url_for(@pagy,1) %>
+  >Load More!
+  </button>
