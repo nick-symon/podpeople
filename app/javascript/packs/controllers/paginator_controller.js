@@ -2,10 +2,10 @@ import { Controller } from "stimulus"
 import Rails from "@rails/ujs";
 
 export default class extends Controller {
-  static targets = ["button"]
+  static targets = ["container", "button"]
   static values = {current: Number, total: Number, url: String}
   
-  loadMore(){
+  paginate(){
     if (this.currentValue < this.totalValue) {
       this.currentValue++
       let url = this.urlValue.slice(0,-1)+this.currentValue
@@ -14,7 +14,7 @@ export default class extends Controller {
         type: "get",
         dataType: "json",
         success: (data) => {
-          document.querySelector('.podlist').insertAdjacentHTML('beforeend', data.html)
+          this.containerTarget.insertAdjacentHTML('beforeend', data.html)
         }
       })
       if (this.currentValue >= this.totalValue) {
