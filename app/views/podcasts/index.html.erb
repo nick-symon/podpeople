@@ -7,16 +7,21 @@
   <% end %>
 </div>
 
-<div data-controller="index" data-index-target="container">
+<div class="podlist">
   <%= render partial: "podcast-list", locals: {podcasts: @podcasts} %>
 </div>
 
+<div class="btn-load-more-container">
   <button 
+    class="btn-load-more"
     data-controller="index"
     data-action="index#loadMore" 
     data-index-target="button"
     data-index-current-value="1"
     data-index-total-value=<%= @pagy.pages %>
     data-index-url-value=<%= pagy_url_for(@pagy,1) %>
-  >Load More!
+  >
+    Load More Results!
   </button>
+</div>
+
