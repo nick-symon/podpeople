@@ -18,7 +18,7 @@ export default class extends Controller {
         }
       })
       if (this.currentValue >= this.totalValue) {
-        this.buttonTarget.classList.add('display-none')
+        this.buttonTarget.classList.add('hidden')
       }
     }
   }
