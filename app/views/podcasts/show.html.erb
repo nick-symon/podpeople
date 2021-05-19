@@ -5,17 +5,27 @@
     <%= render partial: "podcast-detail", locals: {podcast: @podcast} %>
 
     <ul class="podcast-index__nav-list">
-      <li class="podcast-index__nav-list-item">Episodes</li>
-      <li class="podcast-index__nav-list-item">Reviews</li>
+      <li class="podcast-index__nav-list-item">
+        <button class="podcast-index__nav-button" type="button" role="tab">
+          Episodes
+          <span class="podcast-index__nav-badge"><%= @episode_pagy.count %></span>
+        </button>        
+      </li>
+
+        <button class="podcast-index__nav-button" type="button" role="tab">
+          Reviews
+          <span class="podcast-index__nav-badge">TBD </span> 
+        </button>        
     </ul>
     
     <%# Below is where we render all of the associated content (eps, reviews) %>
     <%# Everything gets rendered, then we switch visibility using the nav buttons %>
     <div 
+      class="podcast-index__container-episodes"
       data-controller="paginator"
       data-paginator-current-value="1"
-      data-paginator-total-value=<%= @pagy.pages %>
-      data-paginator-url-value=<%= pagy_url_for(@pagy,1) %>>
+      data-paginator-total-value=<%= @episode_pagy.pages %>
+      data-paginator-url-value=<%= pagy_url_for(@episode_pagy,1) %>>
 
       <div data-paginator-target="container">
       <%= render partial: 'episodes/episode-list', locals: {episodes: @episodes, podcast: @podcast} %>

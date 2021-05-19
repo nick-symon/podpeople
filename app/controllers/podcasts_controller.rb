@@ -18,7 +18,7 @@ class PodcastsController < ApplicationController
     # update and eager load addt'l associations on pcast
     @podcast = Podcast.includes(:episodes).find(params[:id])
     # add addt'l instance variables for addt'l associations
-    @pagy, @episodes = pagy @podcast.episodes
+    @episode_pagy, @episodes = pagy @podcast.episodes
     
     respond_to do |format|
       format.html
