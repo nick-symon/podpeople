@@ -1,25 +1,24 @@
 <div class="podcast-index__container">
 
-  <div class="podcast-index__container-main">
+  <%= render partial: "podcast-detail", locals: {podcast: @podcast} %>
 
-    <%= render partial: "podcast-detail", locals: {podcast: @podcast} %>
+  <ul class="podcast-index__nav-list">
+    <li class="podcast-index__nav-list-item">
+      <button class="podcast-index__nav-button" type="button" role="tab">
+        Episodes
+        <span class="podcast-index__nav-badge"><%= @episode_pagy.count %></span>
+      </button>        
+    </li>
 
-    <ul class="podcast-index__nav-list">
-      <li class="podcast-index__nav-list-item">
-        <button class="podcast-index__nav-button" type="button" role="tab">
-          Episodes
-          <span class="podcast-index__nav-badge"><%= @episode_pagy.count %></span>
-        </button>        
-      </li>
-
-        <button class="podcast-index__nav-button" type="button" role="tab">
-          Reviews
-          <span class="podcast-index__nav-badge">TBD </span> 
-        </button>        
-    </ul>
+      <button class="podcast-index__nav-button" type="button" role="tab">
+        Reviews
+        <span class="podcast-index__nav-badge">TBD </span> 
+      </button>        
+  </ul>
     
     <%# Below is where we render all of the associated content (eps, reviews) %>
     <%# Everything gets rendered, then we switch visibility using the nav buttons %>
+  <div class="podcast-index__container-main">
     <div 
       class="podcast-index__container-episodes"
       data-controller="paginator"
@@ -39,11 +38,15 @@
             Load More Results!
         </button>
       </div>
+      
+      
+      <%# do same thing for reviews  %>
     </div>
-    
-    <%# do same thing for reviews  %>
-    <div class="podcast-index__container-reviews">TBD folks!</div>
-
   </div>
+
+  <div class="podcast-index__container-main" hidden>
+    TBD folks!
+  </div>
+
   <div class="podcast-index__container-sidebar"></div>
 </div>

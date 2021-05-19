@@ -1,11 +1,12 @@
 .podcast-index {
   &__container {
     display:grid;
-    grid-template-columns: 1fr 20rem;
+    grid-template-columns: [pod-start] 1fr [pod-end] 20rem;
+    grid-template-rows: repeat(3, min-content);
 
     &-main {
-      grid-row: 1/-1;
-      grid-column: 1/2;
+      grid-row: 3/4;
+      grid-column: pod-start / pod-end;
     }
 
     &-sidebar {
@@ -19,6 +20,8 @@
 
   &__nav {
     &-list {
+      grid-row: 2/3;
+      grid-column: pod-start / pod-end;
       list-style: none;
       margin-top: 3.5rem;
       margin-bottom: 3rem;
