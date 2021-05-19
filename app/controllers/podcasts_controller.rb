@@ -11,14 +11,23 @@ class PodcastsController < ApplicationController
         render json: {html: render_to_string(partial: 'podcast-list', formats: [:html])}
       }
     end
+
   end
 
   def show 
     # update and eager load addt'l associations on pcast
     @podcast = Podcast.includes(:episodes).find(params[:id])
     # add addt'l instance variables for addt'l associations
-    @episodes = @podcast.episodes
+    @pagy, @episodes = pagy @podcast.episodes
     
+    respond_to do |format|
+      format.html
+      format.js
+      format.json {
+        render json: {html: render_to_string(partial: 'episodes/episode-list', formats: [:html])}
+      }
+    end
+
   end
 
 end

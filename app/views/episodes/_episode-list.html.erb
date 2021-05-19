@@ -1,0 +1,3 @@
+<% @episodes.each do |e| %>
+<%= render partial: 'episodes/episode-card', locals: {episode: e, podcast: @podcast } %>
+<% end %>
