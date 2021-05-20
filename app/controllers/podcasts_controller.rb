@@ -8,7 +8,7 @@ class PodcastsController < ApplicationController
       format.html
       format.js
       format.json {
-        render json: {html: render_to_string(partial: 'podcast-list', formats: [:html])}
+        render json: {html: render_to_string(partial: 'podcast-list', locals: {podcasts: @podcasts}, formats: [:html])}
       }
     end
 
@@ -24,7 +24,7 @@ class PodcastsController < ApplicationController
       format.html
       format.js
       format.json {
-        render json: {html: render_to_string(partial: 'episodes/episode-list', formats: [:html])}
+        render json: {html: render_to_string(partial: 'episodes/episode-list', locals: {episodes: @episodes}, formats: [:html])}
       }
     end
 
