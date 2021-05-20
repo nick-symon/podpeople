@@ -17,13 +17,15 @@
     <%= render partial: "podcast-list", locals: {podcasts: @podcasts} %>
   </div>
 
-  <div class="btn-load-more-container">
-    <button 
-      class="btn-load-more"
-      data-action="click->paginator#paginate" 
-      data-paginator-target="button">
-        Load More Results!
-    </button>
-  </div>
+  <% if @pagy.count > Pagy::VARS[:items] %>
+    <div class="btn-load-more-container">
+      <button 
+        class="btn-load-more"
+        data-action="click->paginator#paginate" 
+        data-paginator-target="button">
+          Load More Results!
+      </button>
+    </div>
+  <% end %>
 </div>
 

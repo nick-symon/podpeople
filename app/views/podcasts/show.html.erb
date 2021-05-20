@@ -43,14 +43,16 @@
       <%= render partial: 'episodes/episode-list', locals: {episodes: @episodes, podcast: @podcast} %>
       </div>
 
-      <div class="btn-load-more-container">
-        <button 
-          class="btn-load-more"
-          data-action="click->paginator#paginate" 
-          data-paginator-target="button">
-            Load More Results!
-        </button>
-      </div>
+      <% if @episode_pagy.count > Pagy::VARS[:items] %>
+        <div class="btn-load-more-container">
+          <button 
+            class="btn-load-more"
+            data-action="click->paginator#paginate" 
+            data-paginator-target="button">
+              Load More Results!
+          </button>
+        </div>
+      <% end %>
       
       
       <%# do same thing for reviews  %>
