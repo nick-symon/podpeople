@@ -1,19 +1,31 @@
-<div class="podcast-index__container">
+<div 
+  class="podcast-index__container"
+  data-controller="tab"
+  data-tab-active-class-value="active"
+  data-tab-index-value="0">
 
   <%= render partial: "podcast-detail", locals: {podcast: @podcast} %>
 
-  <ul class="podcast-index__nav-list">
-    <li class="podcast-index__nav-list-item">
+  <ul class="podcast-index__nav-list" >
+    <li 
+      class="podcast-index__nav-list-item" 
+      data-tab-target="tab"
+      data-action="click->tab#switch">
       <button class="podcast-index__nav-button" type="button" role="tab">
         Episodes
         <span class="podcast-index__nav-badge"><%= @episode_pagy.count %></span>
       </button>        
     </li>
 
+    <li 
+      class="podcast-index__nav-list-item" 
+      data-tab-target="tab"
+      data-action="click->tab#switch">
       <button class="podcast-index__nav-button" type="button" role="tab">
         Reviews
         <span class="podcast-index__nav-badge">TBD </span> 
       </button>        
+    </li>
   </ul>
     
     <%# Below is where we render all of the associated content (eps, reviews) %>
@@ -21,6 +33,7 @@
   <div class="podcast-index__container-main">
     <div 
       class="podcast-index__container-episodes"
+      data-tab-target="pane"
       data-controller="paginator"
       data-paginator-current-value="1"
       data-paginator-total-value=<%= @episode_pagy.pages %>
@@ -44,7 +57,9 @@
     </div>
   </div>
 
-  <div class="podcast-index__container-main" hidden>
+  <div 
+    class="podcast-index__container-main"
+    data-tab-target="pane">
     TBD folks!
   </div>
 

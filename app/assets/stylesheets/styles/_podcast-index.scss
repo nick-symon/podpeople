@@ -51,3 +51,9 @@
     }
   }
 }
+
+.active {
+  font-weight: bold;
+  transform: scale(1.2);
+  border-bottom: 1px solid $color-signature   
+}
