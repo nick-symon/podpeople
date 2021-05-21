@@ -11,7 +11,7 @@
       </p>
       <%= inline_svg_tag "svg/hourglass_bottom", class: "episode-card__date-icon" %>
       <p class="episode-card__date-text">
-      <%# add durtation helper here %>
+      <%= format_duration(episode.duration) %>
       </p>
     </div>
   </div>
