@@ -22,4 +22,21 @@
         display: inline;
     }
   }
+
+  &__link {
+    color: $font-white;
+    text-decoration: none;
+    text-transform: capitalize;
+    font-family: inherit;
+    font-weight: 700;
+    margin-right: .5rem;    
+    padding: .5rem 1rem;
+  }
+
+  &__register {
+    background: rgb(94,28,55);
+    background: linear-gradient(13deg, rgba(94,28,55,1) 0%, rgba(255,0,104,1) 100%);
+    border-radius: 1rem;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.4);
+  }
 }
