@@ -18,6 +18,15 @@
     <header class="header__container header">
       <%= render partial:"shared/header" %>
     </header>
+
+    <div class="flash">
+      <% if notice %>
+        <p class="notice"><%= notice %></p> 
+      <% end %>
+      <% if alert %>
+        <p class="alert"><%= alert %></p> 
+      <% end %>
+    </div>
     
     <main class="content__container">
       <%= yield %>
