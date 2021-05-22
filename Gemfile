@@ -60,3 +60,5 @@ gem "pg", "~> 1.2"
 gem "inline_svg", "~> 1.7"
 
 gem "pagy", "~> 4.7"
+
+gem "devise", "~> 4.8"
