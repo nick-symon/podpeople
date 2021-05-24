@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_22_155948) do
+ActiveRecord::Schema.define(version: 2021_05_24_174152) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,17 @@ ActiveRecord::Schema.define(version: 2021_05_22_155948) do
     t.index ["rss_feed_link"], name: "index_podcasts_on_rss_feed_link", unique: true
   end
 
+  create_table "profiles", force: :cascade do |t|
+    t.string "location"
+    t.string "bio"
+    t.string "website"
+    t.string "pronoun"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -70,4 +81,5 @@ ActiveRecord::Schema.define(version: 2021_05_22_155948) do
   end
 
   add_foreign_key "episodes", "podcasts"
+  add_foreign_key "profiles", "users"
 end
