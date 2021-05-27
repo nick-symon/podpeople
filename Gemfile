@@ -62,3 +62,5 @@ gem "inline_svg", "~> 1.7"
 gem "pagy", "~> 4.7"
 
 gem "devise", "~> 4.8"
+
+gem 'rexml', '~> 3.2', '>= 3.2.4'
