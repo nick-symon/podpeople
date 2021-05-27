@@ -5,4 +5,10 @@ class ReviewTest < ActiveSupport::TestCase
     review = reviews(:good)
     assert review.valid? 
   end
+
+  test "ratings must be within range" do
+    review = reviews(:good)
+    review.rating = 6
+    assert review.invalid?
+  end
 end
