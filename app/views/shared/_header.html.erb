@@ -9,11 +9,18 @@
 <%# login links %>
 <nav>
   <ul class="header__list">
-    <li class="header__list-item">
-    <%= link_to "Sign In", new_user_session_path, class: "header__link" %>
-    </li>
-    <li class="header__list-item">
-    <%= link_to "Register", new_user_registration_path, class: "header__link header__register"%>
-    </li>
+    <% if user_signed_in? %>
+      <li class="header__list-item">
+      <%= link_to "Profile", profile_path(@profile), class: "header__link" %>
+      <%= link_to "Log Out", destroy_user_session_path, method: :delete , class: "header__link" %>
+      </li>
+    <% else %>
+      <li class="header__list-item">
+      <%= link_to "Sign In", new_user_session_path, class: "header__link" %>
+      </li>
+      <li class="header__list-item">
+      <%= link_to "Register", new_user_registration_path, class: "header__link header__register"%>
+      </li>
+    <% end %>
   </ul>
 </nav>
