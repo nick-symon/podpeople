@@ -4,7 +4,7 @@ good:
   rating: 5
   content: "This is my favorite podcast ever!" 
   user: jack
-  podcast: horror_show
+  podcast_id: "954193758"
 
 # two:
 #   rating: 

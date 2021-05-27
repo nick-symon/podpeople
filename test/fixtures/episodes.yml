@@ -4,26 +4,26 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-scriptnotes_episode: 
-  podcast: horror_show
-  guid: "51d0b641-3fee-465e-954c-2af88a039e22"
-  itunes_season: ""
-  itunes_episode: "75"
-  published_date: "2020-03-10 05:00:03-05"
-  link: "https://ww.simplecast.com/episodes/scriptnotes-_wnurLcO"
-  description:
-    "<p>Your Daily Rec: <a href=\"https://podcasts.apple.com/us/podcast/scriptnotes-podcast/id462495496\" target=\"_blank\">Scriptnotes</a></p><p>--</p><p>Subscribe now for great recommendations, Monday through Friday!</p>"
-  duration: "00:02:59"
-  enclosure_type: "audio/mpeg"
-  enclosure_url:
-    "https://chtbl.com/track/118D32/cdn.simplecast.com/audio/3d6a21/3d6a2131-ddc3-445f-9bf6-d93c2a869414/cdb634c3-5ac8-45c3-8417-35e254425c0b/landr-the-daily-rec-phil-scriptnotes-low-balanced_tc.mp3?aid=rss_feed&feed=zAIY_xmA"
-  title: "Scriptnotes"
-  itunes_summary: ""
-  itunes_subtitle: ""
-  slug: "scriptnotes"
-  podcast_id: "1484531308"
-  created_at: Fri, 08 May 2020 00:00:00.000000000 UTC +00:00
-  updated_at: Fri, 08 May 2020 00:00:00.000000000 UTC +00:00>
-#
-two: {}
-# column: value
+# scriptnotes_episode: 
+#   podcast: horror_show
+#   guid: "51d0b641-3fee-465e-954c-2af88a039e22"
+#   itunes_season: ""
+#   itunes_episode: "75"
+#   published_date: "2020-03-10 05:00:03-05"
+#   link: "https://ww.simplecast.com/episodes/scriptnotes-_wnurLcO"
+#   description:
+#     "<p>Your Daily Rec: <a href=\"https://podcasts.apple.com/us/podcast/scriptnotes-podcast/id462495496\" target=\"_blank\">Scriptnotes</a></p><p>--</p><p>Subscribe now for great recommendations, Monday through Friday!</p>"
+#   duration: "00:02:59"
+#   enclosure_type: "audio/mpeg"
+#   enclosure_url:
+#     "https://chtbl.com/track/118D32/cdn.simplecast.com/audio/3d6a21/3d6a2131-ddc3-445f-9bf6-d93c2a869414/cdb634c3-5ac8-45c3-8417-35e254425c0b/landr-the-daily-rec-phil-scriptnotes-low-balanced_tc.mp3?aid=rss_feed&feed=zAIY_xmA"
+#   title: "Scriptnotes"
+#   itunes_summary: ""
+#   itunes_subtitle: ""
+#   slug: "scriptnotes"
+#   podcast_id: "1484531308"
+#   created_at: Fri, 08 May 2020 00:00:00.000000000 UTC +00:00
+#   updated_at: Fri, 08 May 2020 00:00:00.000000000 UTC +00:00>
+# #
+# two: {}
+# # column: value
