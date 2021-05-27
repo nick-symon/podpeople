@@ -1,7 +1,9 @@
 require "test_helper"
 
 class EpisodeTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "valid episode" do
+    e = episodes(:scriptnotes_episode)  
+    # byebug
+    assert e.valid?
+  end
 end
