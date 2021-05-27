@@ -65,5 +65,9 @@
     TBD folks!
   </div>
 
-  <div class="podcast-index__container-sidebar"></div>
+  <div class="podcast-index__container-sidebar">
+  <% if user_signed_in? %>
+  <%= button_to "Leave a Review!", new_profile_review_path(current_user.profile), params: {podcast_id: @podcast.id}, method: :get %> 
+  <% end %>
+  </div>
 </div>
