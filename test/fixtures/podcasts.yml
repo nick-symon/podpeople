@@ -4,8 +4,23 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-# column: value
+horror_show: 
+  id: "954193758"
+  subtitle: "A Horror Movie Podcast"
+  rss_feed_link: "https://horrorshow.libsyn.com/rss"
+  link: "http://www.ihatehorror.com"
+  itunes_categories: ["TV & Film", "Podcasts", "Comedy"]
+  image_url: "https://ssl-static.libsyn.com/p/assets/d/c/1/8/dc1817a88eb1c8b7/Unbranded_Album_Art.png"
+  image_title: "The Horror Show: A Horror Movie Podcast"
+  last_build_date: "2021-04-13 04:09:32+00:00"
+  author_name: "I Hate Horror"
+  description: "Two childhood friends get together to dissect, mutilate, dismember & butcher all of your favorite and NOT so favorite horror movies and other horror related events. Every week Joe and Sean will visit horror from the past and present with their own unique comedic style."
+  language: "en"
+  title: "The Horror Show: A Horror Movie Podcast"
+  slug: "the-horror-show-a-horror-movie-podcast"
+  itunes_subtitle: "A Horror Movie Podcast"
+  itunes_summary: "Two childhood friends get together to dissect, mutilate, dismember & butcher all of your favorite and NOT so favorite horror movies and other horror related events. Every week Joe and Sean will visit horror from the past and present with their own unique comedic style."
+  pub_date: "2021-04-13 04:00:00+00:00"
+  created_at: Fri, 08 May 2020 00:00:00.000000000 UTC +00:00
+  updated_at: Fri, 08 May 2020 00:00:00.000000000 UTC +00:00>]#
+

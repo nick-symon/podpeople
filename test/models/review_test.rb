@@ -1,7 +1,8 @@
 require "test_helper"
 
 class ReviewTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "valid review" do
+    review = reviews(:good)
+    assert review.valid? 
+  end
 end
