@@ -73,12 +73,12 @@ ActiveRecord::Schema.define(version: 2021_05_27_173832) do
   create_table "reviews", force: :cascade do |t|
     t.integer "rating"
     t.text "content"
-    t.bigint "user_id", null: false
+    t.bigint "profile_id", null: false
     t.text "podcast_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["podcast_id"], name: "index_reviews_on_podcast_id"
-    t.index ["user_id"], name: "index_reviews_on_user_id"
+    t.index ["profile_id"], name: "index_reviews_on_profile_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -96,5 +96,5 @@ ActiveRecord::Schema.define(version: 2021_05_27_173832) do
   add_foreign_key "episodes", "podcasts"
   add_foreign_key "profiles", "users"
   add_foreign_key "reviews", "podcasts"
-  add_foreign_key "reviews", "users"
+  add_foreign_key "reviews", "profiles"
 end
