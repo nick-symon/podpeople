@@ -3,7 +3,7 @@
 good:
   rating: 5
   content: "This is my favorite podcast ever!" 
-  user: jack
+  profile: fancy_jack
   podcast_id: "954193758"
 
 # two:
