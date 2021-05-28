@@ -24,12 +24,10 @@
       <button class="podcast-index__nav-button" type="button" role="tab">
         Reviews
       </button>        
-      <span class="podcast-index__nav-badge">TBD </span> 
+      <span class="podcast-index__nav-badge"><%= @review_pagy.count %></span> 
     </li>
   </ul>
     
-    <%# Below is where we render all of the associated content (eps, reviews) %>
-    <%# Everything gets rendered, then we switch visibility using the nav buttons %>
   <div class="podcast-index__container-main">
     <div 
       class="podcast-index__container-episodes"
@@ -55,7 +53,32 @@
       <% end %>
       
       
+    </div>
       <%# do same thing for reviews  %>
+    <div 
+      class="podcast-index__container-tab"
+      data-tab-target="pane"
+      data-controller="paginator"
+      data-paginator-current-value="1"
+      data-paginator-total-value=<%= @review_pagy.pages %>
+      data-paginator-url-value=<%= pagy_url_for(@review_pagy,1) %>>
+
+      <div data-paginator-target="container">
+      <%= render partial: 'reviews/review-list', locals: {reviews: @reviews} %>
+      </div>
+
+      <% if @review_pagy.count > Pagy::VARS[:items] %>
+        <div class="btn-load-more-container">
+          <button 
+            class="btn-load-more"
+            data-action="click->paginator#paginate" 
+            data-paginator-target="button">
+              Load More Results!
+          </button>
+        </div>
+      <% end %>
+      
+      
     </div>
   </div>
 

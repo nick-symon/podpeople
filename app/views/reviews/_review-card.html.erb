@@ -1,0 +1,18 @@
+<div class="review-list__container">
+  <div>
+  <%# put icon here %>
+  </div>
+  <div class="">
+    <div class="review-list__header-container">
+      <p class="review-list__header-detail-link">
+        Review by <span class="review-list__header-username"><%= review.profile.username %></span> 
+      </p>
+      <%# Star rating here %>
+      <p><%= review.rating %></p>
+    </div>
+    <p class="review-list__content"><%= review.content %></p>
+    <div class="review-list__date-container">
+      <p class="review-list__date-text"><%= review.created_at %></p>
+    </div>
+  </div>
+</div>
