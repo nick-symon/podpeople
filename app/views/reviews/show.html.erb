@@ -11,13 +11,13 @@
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @review.user %>
+  <strong>Username:</strong>
+  <%= @review.profile.username %>
 </p>
 
 <p>
   <strong>Podcast:</strong>
-  <%= @review.podcast_id %>
+  <%= @review.podcast.title %>
 </p>
 
 <%= link_to 'Edit', edit_review_path(@review) %> |

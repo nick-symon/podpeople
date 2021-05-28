@@ -15,8 +15,8 @@ module EpisodesHelper
           minute = time_array[0].to_i
       end
       [].tap do |p|
-        p << "#{hour} hour".pluralize(hour) unless hour.zero?
-        p << "#{minute} minute".pluralize(minute) unless minute.zero?
+        p << "#{hour} hour".pluralize(hour) unless hour.blank?
+        p << "#{minute} minute".pluralize(minute) unless minute.blank?
       end.join(', ')
     else
       ActiveSupport::Duration

@@ -1,9 +1,9 @@
 class ReviewsController < ApplicationController
   def new
     if user_signed_in?
-      @user = current_user
+      @profile = current_user.profile
       @podcast = Podcast.find(params[:podcast_id])
-      @review = Review.new(podcast: @podcast, user: @user)
+      @review = Review.new(podcast: @podcast, profile: @profile)
     else
       redirect_to root, message: "You must be signed in!"
     end
@@ -25,7 +25,7 @@ class ReviewsController < ApplicationController
 
   private
   def review_params
-    params.require(:review).permit(:user_id, :podcast_id, :content, :rating)
+    params.require(:review).permit(:profile_id, :podcast_id, :content, :rating)
   end
 end
 

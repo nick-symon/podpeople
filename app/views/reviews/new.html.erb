@@ -1,7 +1,9 @@
 <%= form_with model: @review do |f|%>
+<%= f.label :content %>
 <%= f.text_area :content %>
+<%= f.label :rating %>
 <%= f.select :rating, (1..5).to_a %>
 <%= f.hidden_field :podcast_id, value: @review.podcast_id %>
-<%= f.hidden_field :user_id, value: @review.user_id %>
+<%= f.hidden_field :profile_id, value: @review.profile_id %>
 <%= f.submit "Leave Review!" %>
 <% end %>
