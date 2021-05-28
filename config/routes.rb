@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   
   resources :podcasts, only: [:index, :show]
   resources :episodes, only: [:index, :show]
-  resources :profiles, except: [:new, :create, :destroy] do
-    resources :reviews
-  end
+  resources :profiles, except: [:new, :create, :destroy]
+  resources :reviews
 end
