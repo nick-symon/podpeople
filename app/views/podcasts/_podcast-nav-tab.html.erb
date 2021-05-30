@@ -1,0 +1,21 @@
+<div 
+  class="podcast-index__container-tab"
+  data-tab-target="pane"
+  data-controller="paginator"
+  data-paginator-current-value="1"
+  data-paginator-total-value=<%= paginator.pages %>
+  data-paginator-url-value=<%= pagy_url_for(paginator,1) %>>
+
+  <%= yield %>
+
+  <% if paginator.count > Pagy::VARS[:items] %>
+    <div class="btn-load-more-container">
+      <button 
+        class="btn-load-more"
+        data-action="click->paginator#paginate" 
+        data-paginator-target="button">
+          Load More Results!
+      </button>
+    </div>
+  <% end %>
+</div>
