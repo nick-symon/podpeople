@@ -1,7 +1,8 @@
 require "test_helper"
 
 class LikeTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "valid like" do
+    like = likes(:one)
+    assert like.valid?
+  end
 end
