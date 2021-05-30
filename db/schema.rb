@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_27_173832) do
+ActiveRecord::Schema.define(version: 2021_05_30_153301) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,16 @@ ActiveRecord::Schema.define(version: 2021_05_27_173832) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["guid"], name: "index_episodes_on_guid", unique: true
     t.index ["podcast_id"], name: "podcast_id_foreign_key_index"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.string "likeable_type"
+    t.bigint "likeable_id"
+    t.bigint "profile_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["likeable_type", "likeable_id"], name: "index_likes_on_likeable"
+    t.index ["profile_id"], name: "index_likes_on_profile_id"
   end
 
   create_table "podcasts", id: :text, force: :cascade do |t|
@@ -94,6 +104,7 @@ ActiveRecord::Schema.define(version: 2021_05_27_173832) do
   end
 
   add_foreign_key "episodes", "podcasts"
+  add_foreign_key "likes", "profiles"
   add_foreign_key "profiles", "users"
   add_foreign_key "reviews", "podcasts"
   add_foreign_key "reviews", "profiles"
