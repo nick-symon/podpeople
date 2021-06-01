@@ -48,8 +48,6 @@ ActiveRecord::Schema.define(version: 2021_06_01_180143) do
   create_table "lists", force: :cascade do |t|
     t.text "name", null: false
     t.text "description"
-    t.string "listable_type"
-    t.bigint "listable_id", default: [], array: true
     t.bigint "profile_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
