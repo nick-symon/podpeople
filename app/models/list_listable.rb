@@ -1,0 +1,2 @@
+class ListListable < ApplicationRecord
+end
