@@ -1,0 +1,2 @@
+class ListJoin < ApplicationRecord
+end
