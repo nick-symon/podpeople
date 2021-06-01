@@ -1,7 +1,8 @@
 require "test_helper"
 
 class ListTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "valid list" do
+    list = lists(:best_pods)
+    assert list.valid?
+  end
 end
