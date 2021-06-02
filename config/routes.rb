@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :reviews
   devise_for :users
   root to: "welcome#index"
   
@@ -7,4 +6,5 @@ Rails.application.routes.draw do
   resources :episodes, only: [:index, :show]
   resources :profiles, except: [:new, :create, :destroy]
   resources :reviews
+  resources :likes, only: [:create, :show, :destory]
 end
