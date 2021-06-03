@@ -5,4 +5,5 @@ class Review < ApplicationRecord
   validates_associated :podcast, :profile 
   validates :podcast, :profile, :rating, presence: true
   validates :rating, inclusion: {in: 1..5 }
+  validates :profile, uniqueness: {scope: :podcast, message: "only one review per user"}
 end
