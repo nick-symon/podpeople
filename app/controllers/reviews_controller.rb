@@ -12,9 +12,23 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     if @review.save
-      redirect_to @review
+      redirect_to @review.podcast
     else
       render :new
+    end
+  end
+
+  def edit
+    @review = Review.find(params[:id])
+  end
+
+  def update
+    @review = Review.find(params[:id])
+
+    if @review.update(review_params)
+      redirect_to @review.podcast
+    else
+      render :edit
     end
   end
 
