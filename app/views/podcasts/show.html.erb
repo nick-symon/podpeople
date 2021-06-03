@@ -49,7 +49,7 @@
     <% if @review.present? %>
       <%= button_to "Edit a Review!", edit_review_path(@review.first), params: {podcast_id: @podcast.id}, method: :get %> 
     <% else %>
-      <%= button_to "Leave a Review!", new_review_path(current_user.profile), params: {podcast_id: @podcast.id}, method: :get %> 
+      <%= button_to "Leave a Review!", new_review_path, params: {podcast_id: @podcast.id}, method: :get %> 
     <% end %>
 
     <% if current_user.profile.likes_podcast?(@podcast.id) %>
