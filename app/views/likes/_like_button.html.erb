@@ -1,0 +1,15 @@
+<%= button_to likes_path, 
+    remote: true, 
+    params: { 
+      like: {
+        profile_id: profile_id, 
+        likeable_id: likeable_id, 
+        likeable_type: likeable_type
+      } 
+    }, 
+    method: :post do %> 
+
+  <%= inline_svg_tag "svg/favorite_outline.svg" %>  
+  <p>Add to faves!</p>
+
+<% end %>
