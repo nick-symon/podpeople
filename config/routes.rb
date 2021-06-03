@@ -6,5 +6,5 @@ Rails.application.routes.draw do
   resources :episodes, only: [:index, :show]
   resources :profiles, except: [:new, :create, :destroy]
   resources :reviews
-  resources :likes, only: [:create, :show, :destory]
+  resources :likes, only: [:create, :show, :destroy]
 end

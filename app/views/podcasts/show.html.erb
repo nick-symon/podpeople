@@ -46,8 +46,18 @@
 
   <div class="podcast-index__container-sidebar">
   <% if user_signed_in? %>
-  <%= button_to "Leave a Review!", new_review_path(current_user.profile), params: {podcast_id: @podcast.id}, method: :get %> 
-  <%= button_to "Like!", likes_path(current_user.profile), remote: true, params: { like: {profile_id: current_user.profile.id, likeable_id: @podcast.id, likeable_type: @podcast.class} }, method: :post %> 
+    <% if @review.present? %>
+      <%= button_to "Edit a Review!", edit_review_path(current_user.profile), params: {podcast_id: @podcast.id}, method: :get %> 
+    <% else %>
+      <%= button_to "Leave a Review!", new_review_path(current_user.profile), params: {podcast_id: @podcast.id}, method: :get %> 
+    <% end %>
+
+    <% if current_user.profile.likes.present? %>
+      <%= button_to "Unlike!", like_path(current_user.profile.likes), remote: true, params: { like: {profile_id: current_user.profile.id, likeable_id: @podcast.id, likeable_type: @podcast.class} }, method: :delete %> 
+    <% else %>
+      <%= button_to "Like!", likes_path(current_user.profile.likes), remote: true, params: { like: {profile_id: current_user.profile.id, likeable_id: @podcast.id, likeable_type: @podcast.class} }, method: :post %> 
+    <% end %>
+
   <% end %>
   </div>
 </div>

@@ -21,6 +21,11 @@ class PodcastsController < ApplicationController
     @episode_pagy, @episodes = pagy(@podcast.episodes, page_param: :page_episodes)
     @review_pagy, @reviews = pagy(@podcast.reviews, page_param: :page_reviews)
     
+    if user_signed_in?
+      @profile = current_user.profile
+      @review = Review.where(profile: @profile, podcast: @podcast)
+    end
+
     respond_to do |format|
       format.html
       format.js

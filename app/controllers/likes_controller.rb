@@ -5,7 +5,7 @@ class LikesController < ApplicationController
   end
 
   def create
-    @like = Like.create!(like_parameters) 
+    @like = Like.create(like_parameters) 
     if @like.valid?
       @like.save
       flash[:notice] = "Like was successful!" 
@@ -15,7 +15,10 @@ class LikesController < ApplicationController
     end
   end
   
-  def destory
+  def destroy
+    @like = Like.find_by(like_parameters)
+    @like.destroy!
+    flash[:notice] = "Like deleted!" 
   end
 
   private
