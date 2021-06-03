@@ -1,26 +1,25 @@
 class LikesController < ApplicationController
-  # before_action :authenticate_user!
+  before_action :authenticate_user!
 
   def show
   end
 
   def create
-    @profile = current_user.profile
-    @like = Like.create(profile_id: @profile.id, likeable_id: params[:likeable_id], likeable_type: params[:likeable_type]) 
+    @like = Like.create!(like_parameters) 
     if @like.valid?
       @like.save
       flash[:notice] = "Like was successful!" 
     else
       errors = @like.errors.full_messages
-      flash[:notice] = "#{errors}" 
+      flash[:error] = "#{errors}" 
     end
   end
   
   def destory
   end
 
-  # private
-  # def like_parameters
-  #   params.permit(:profile_id, :likeable_id, :likeable_type)
-  # end
+  private
+  def like_parameters
+    params.require(:like).permit(:profile_id, :likeable_id, :likeable_type)
+  end
 end
