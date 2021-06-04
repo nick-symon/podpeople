@@ -47,13 +47,13 @@
   <div class="podcast-index__container-sidebar">
   <% if user_signed_in? %>
     <% if @review.present? %>
-      <%= button_to "Edit a Review!", edit_review_path(@review.first), params: {podcast_id: @podcast.id}, method: :get %> 
+      <%= button_to "Edit a Review!", edit_review_path(@review.first), form: {id: "review_button" },params: {podcast_id: @podcast.id}, method: :get %> 
     <% else %>
-      <%= button_to "Leave a Review!", new_review_path, params: {podcast_id: @podcast.id}, method: :get %> 
+      <%= button_to "Leave a Review!", new_review_path, form: {id: "review_button" },params: {podcast_id: @podcast.id}, method: :get %> 
     <% end %>
 
     <% if current_user.profile.likes_podcast?(@podcast.id) %>
-      <%= render partial: "likes/unlike_button", locals: {profile_id: current_user.profile.id, likeable_id: @podcast.id, likeable_type: @podcast.class} %>
+      <%= render partial: "likes/unlike_button", locals: {like_id: current_user.profile.likes.first.id, profile_id: current_user.profile.id, likeable_id: @podcast.id, likeable_type: @podcast.class} %>
     <% else %>
       <%= render partial: "likes/like_button", locals: {profile_id: current_user.profile.id, likeable_id: @podcast.id, likeable_type: @podcast.class} %>
     <% end %>

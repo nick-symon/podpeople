@@ -6,19 +6,23 @@ class LikesController < ApplicationController
 
   def create
     @like = Like.create(like_parameters) 
-    if @like.valid?
-      @like.save
-      flash[:notice] = "Like was successful!" 
-    else
-      errors = @like.errors.full_messages
-      flash[:error] = "#{errors}" 
+    respond_to do |format|
+      if @like.valid?
+        @like.save
+        format.js
+      else
+        errors = @like.errors.full_messages
+        flash.now[:error] = "#{errors}" 
+      end
     end
   end
   
   def destroy
     @like = Like.find_by(like_parameters)
-    @like.destroy!
-    flash[:notice] = "Like deleted!" 
+    respond_to do |format|
+      @like.destroy!
+      format.js
+    end
   end
 
   private

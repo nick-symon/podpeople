@@ -1,4 +1,4 @@
-<%= button_to like_path, 
+<%= button_to like_path(like_id), 
     remote: true, 
     params: { 
       like: {
@@ -7,6 +7,7 @@
         likeable_type: likeable_type
       } 
     }, 
+    form: {id: "like_button" },
     method: :delete do %> 
 
   <%= inline_svg_tag "svg/favorite.svg" %>  

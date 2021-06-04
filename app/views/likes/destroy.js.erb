@@ -1,0 +1,4 @@
+var replaced = document.querySelector("#like_button");
+replaced.remove();
+var review = document.querySelector("#review_button");
+review.insertAdjacentHTML('afterend', "<%= j render partial: "likes/like_button", locals: {profile_id: current_user.profile.id, likeable_id: @like.likeable.id, likeable_type: @like.likeable.class} %>")
