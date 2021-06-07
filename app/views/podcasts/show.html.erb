@@ -45,6 +45,9 @@
   </div>
 
   <div class="podcast-index__container-sidebar">
+  <div>
+    <%= star_rating_helper(@podcast.avg_rating, css_class: "podcast-detail__star-icon") %>
+  </div>
   <% if user_signed_in? %>
     <% if @review.present? %>
       <%= button_to "Edit a Review!", edit_review_path(@review.first), form: {id: "review_button" },params: {podcast_id: @podcast.id}, method: :get %> 

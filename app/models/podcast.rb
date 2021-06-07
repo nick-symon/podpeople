@@ -11,4 +11,8 @@ class Podcast < ApplicationRecord
   def self.search(query)
     podcasts = Podcast.where("title ILIKE ?", "%#{query}%")
   end
+
+  def avg_rating
+    reviews.average("rating")
+  end
 end

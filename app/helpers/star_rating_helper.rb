@@ -1,5 +1,5 @@
 module StarRatingHelper
-  def star_rating(rating, css_class: nil)
+  def star_rating_helper(rating, css_class: nil)
     empty_star = inline_svg_tag("svg/star_outline.svg", class: css_class)
     half_star = inline_svg_tag("svg/star_half.svg", class: css_class)
     full_star = inline_svg_tag("svg/star", class: css_class)

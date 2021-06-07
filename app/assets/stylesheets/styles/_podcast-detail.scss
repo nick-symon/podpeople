@@ -17,4 +17,10 @@
     font-weight: 300;
     font-size: 1.7rem;
   }
+
+  &__star-icon {
+    width: 4rem;
+    height: 4rem;
+    fill: $color-gold;
+  }
 }
