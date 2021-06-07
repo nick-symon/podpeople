@@ -1,8 +1,8 @@
 module StarRatingHelper
-  def star_rating(rating)
-    empty_star = inline_svg_tag("svg/star_outline.svg")
-    half_star = inline_svg_tag("svg/star_half.svg")
-    full_star = inline_svg_tag("svg/star")
+  def star_rating(rating, css_class: nil)
+    empty_star = inline_svg_tag("svg/star_outline.svg", class: css_class)
+    half_star = inline_svg_tag("svg/star_half.svg", class: css_class)
+    full_star = inline_svg_tag("svg/star", class: css_class)
     avg_rating = (rating * 2.0).round / 2.0
     rd_rating = avg_rating.round(half: :down)
     full_ct = rd_rating
