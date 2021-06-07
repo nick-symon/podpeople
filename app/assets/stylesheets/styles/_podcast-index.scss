@@ -50,6 +50,13 @@
       display: inline;
     }
   }
+  
+  &__star-icon {
+    width: 4rem;
+    height: 4rem;
+    fill: $color-gold;
+  }
+
 }
 
 .active {
