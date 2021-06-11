@@ -48,7 +48,29 @@ class PodcastSpider < Kimurai::Base
   end
 
   def parse_final(response, url, data: {})
-    puts response
+    # puts response
+    podcast = {}
+    podcast["title"] = response.xpath('//channel/title').inner_text 
+    podcast["subtitle"] = response.xpath('//channel/itunes:subtitle', 'itunes' => 'http://www.itunes.com/dtds/podcast-1.0.dtd').inner_text 
+    podcast["rss_feed_link"] = url
+    podcast["link"] = response.xpath('//channel/link').inner_text 
+    podcast["itunes_categories"] = data[:genres]
+    podcast["image_url"] = response.xpath('//channel/image/url').inner_text 
+    podcast["image_title"] = response.xpath('//channel/image/title').inner_text 
+    # thikn we should run below through a parse date fxn
+    podcast["last_build_date"] = response.xpath('//channel/lastBuildDate').inner_text 
+    podcast["author_name"] = response.xpath('//channel/itunes:author', 'itunes' => 'http://www.itunes.com/dtds/podcast-1.0.dtd').inner_text 
+    podcast["description"] = response.xpath('//channel/description').inner_text 
+    podcast["language"] = response.xpath('//channel/language').inner_text 
+    podcast["title"] = response.xpath('//channel/title').inner_text
+    podcast["itunes_subtitle"] = response.xpath('//channel/itunes:subtitle', 'itunes' => 'http://www.itunes.com/dtds/podcast-1.0.dtd').inner_text 
+    podcast["itunes_summary"] = response.xpath('//channel/itunes:summary', 'itunes' => 'http://www.itunes.com/dtds/podcast-1.0.dtd').inner_text 
+    podcast["pub_date"] = response.xpath('//channel/pubDate').inner_html
+    # we can extraxt text from xml using approach below
+    # basic use the poddracer script but replace when neede
+    # make sure we register namespcaes
+    # 
+    puts podcast
   end
 
 end
