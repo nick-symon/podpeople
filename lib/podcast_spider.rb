@@ -12,15 +12,19 @@ class PodcastSpider < Kimurai::Base
     sub_genre_links = response.css('ul.top-level-subgenres a')
 
     genre_links.each do |genre_link|
-      request_to :parse_podcast, url: genre_link['href']
+      url = genre_link['href']
+      browser.visit(url)
+      parse_podcast(browser.current_response, url: url)
     end
 
     sub_genre_links.each do |sub_genre_link|
-      request_to :parse_podcast, url: sub_genre_link['href']
+      url = sub_genre_link['href']
+      browser.visit(url)
+      parse_podcast(browser.current_response, url: url)
     end
   end
 
-  def parse_podcast(response, url, data: {})
+  def parse_podcast(response, url:, **data)
 
     puts url
     def strip_id_from_link(link)
@@ -33,23 +37,25 @@ class PodcastSpider < Kimurai::Base
     response.css('div#selectedcontent a').each do |link|
       id = strip_id_from_link(link['href'])
       url = "https://itunes.apple.com/lookup?id=#{id}"
-      request_to :parse_lookup, url: url, data: {id: id}
+      browser.visit(url)
+      parse_lookup(browser.current_response, url:url, **{id:id})
     end
     
   end
 
-  def parse_lookup(response, url, data: {})
+  def parse_lookup(response, url:, **data)
     json_hash = JSON.parse(response.css('body').inner_text)
     results_hash = json_hash['results'][0]
     feed_url = results_hash['feedUrl']
     genres = results_hash['genres']
     podcast_name = results_hash['collectionName']
-    request_to :parse_final, url: feed_url, data: {id: data[:id], genres: genres}
+    browser.visit(feed_url)
+    parse_final(browser.current_response, url: feed_url, **{id: data[:id], genres: genres}) 
   end
 
-  def parse_final(response, url, data: {})
-    # puts response
+  def parse_final(response, url:, **data)
     podcast = {}
+    podcast["id"] = data[:id]
     podcast["title"] = response.xpath('//channel/title').inner_text 
     podcast["subtitle"] = response.xpath('//channel/itunes:subtitle', 'itunes' => 'http://www.itunes.com/dtds/podcast-1.0.dtd').inner_text 
     podcast["rss_feed_link"] = url
@@ -69,7 +75,7 @@ class PodcastSpider < Kimurai::Base
     # we can extraxt text from xml using approach below
     # basic use the poddracer script but replace when neede
     # make sure we register namespcaes
-    # 
+    # note that name spacing doesn't currently work and a lot of attirubres aren't getting picked up
     puts podcast
   end
 
