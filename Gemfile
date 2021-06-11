@@ -66,3 +66,5 @@ gem "devise", "~> 4.8"
 gem 'rexml', '~> 3.2', '>= 3.2.4'
 
 gem "kimurai", "~> 1.4"
+
+gem "rss"

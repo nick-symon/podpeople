@@ -1,3 +1,4 @@
+require 'rss'
 require 'kimurai'
 
 class PodcastSpider < Kimurai::Base
@@ -49,29 +50,29 @@ class PodcastSpider < Kimurai::Base
     feed_url = results_hash['feedUrl']
     genres = results_hash['genres']
     podcast_name = results_hash['collectionName']
-    browser.visit(feed_url)
-    parse_final(browser.current_response, url: feed_url, **{id: data[:id], genres: genres}) 
+    parse_rss(url: feed_url, **{id: data[:id], genres: genres}) 
+    # browser.visit(feed_url)
+    # parse_final(browser.current_response, url: feed_url, **{id: data[:id], genres: genres}) 
   end
 
-  def parse_final(response, url:, **data)
+  def parse_rss(url:, **data)
+    feed = RSS::Parser.parse(url)
     podcast = {}
     podcast["id"] = data[:id]
-    podcast["title"] = response.xpath('//channel/title').inner_text 
-    podcast["subtitle"] = response.xpath('//channel/itunes:subtitle', 'itunes' => 'http://www.itunes.com/dtds/podcast-1.0.dtd').inner_text 
+    podcast["title"] = feed.channel.title 
+    podcast["subtitle"] = feed.channel.itunes_subtitle 
     podcast["rss_feed_link"] = url
-    podcast["link"] = response.xpath('//channel/link').inner_text 
+    podcast["link"] = feed.channel.link 
     podcast["itunes_categories"] = data[:genres]
-    podcast["image_url"] = response.xpath('//channel/image/url').inner_text 
-    podcast["image_title"] = response.xpath('//channel/image/title').inner_text 
+    podcast["image_url"] = feed.channel.image.url  
+    podcast["image_title"] = feed.channel.image.title 
     # thikn we should run below through a parse date fxn
-    podcast["last_build_date"] = response.xpath('//channel/lastBuildDate').inner_text 
-    podcast["author_name"] = response.xpath('//channel/itunes:author', 'itunes' => 'http://www.itunes.com/dtds/podcast-1.0.dtd').inner_text 
-    podcast["description"] = response.xpath('//channel/description').inner_text 
-    podcast["language"] = response.xpath('//channel/language').inner_text 
-    podcast["title"] = response.xpath('//channel/title').inner_text
-    podcast["itunes_subtitle"] = response.xpath('//channel/itunes:subtitle', 'itunes' => 'http://www.itunes.com/dtds/podcast-1.0.dtd').inner_text 
-    podcast["itunes_summary"] = response.xpath('//channel/itunes:summary', 'itunes' => 'http://www.itunes.com/dtds/podcast-1.0.dtd').inner_text 
-    podcast["pub_date"] = response.xpath('//channel/pubDate').inner_html
+    podcast["last_build_date"] = feed.channel.lastBuildDate  
+    podcast["author_name"] = feed.channel.itunes_author   
+    podcast["description"] = feed.channel.description  
+    podcast["language"] = feed.channel.language  
+    podcast["itunes_summary"] = feed.channel.itunes_summary  
+    podcast["pub_date"] = feed.channel.pubDate  
     # we can extraxt text from xml using approach below
     # basic use the poddracer script but replace when neede
     # make sure we register namespcaes
