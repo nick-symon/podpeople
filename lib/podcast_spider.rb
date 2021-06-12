@@ -84,20 +84,20 @@ class PodcastSpider < Kimurai::Base
     podcast = {}
     podcast["id"] = data[:id]
     podcast["title"] = feed.channel.title 
-    podcast["subtitle"] = feed.channel.itunes_subtitle || ''
+    podcast["subtitle"] = feed.channel.itunes_subtitle 
     podcast["rss_feed_link"] = url
-    podcast["link"] = feed.channel.link || ''
+    podcast["link"] = feed.channel.link 
     podcast["itunes_categories"] = data[:genres]
-    podcast["image_url"] = feed.channel.image&.url || ''
-    podcast["image_title"] = feed.channel.image&.title || ''
+    podcast["image_url"] = feed.channel.image&.url 
+    podcast["image_title"] = feed.channel.image&.title 
     # thikn we should run below through a parse date fxn
-    podcast["last_build_date"] = feed.channel.lastBuildDate || ''
-    podcast["author_name"] = feed.channel.itunes_author || ''
-    podcast["description"] = feed.channel.description || ''
-    podcast["language"] = feed.channel.language || ''
-    podcast["itunes_summary"] = feed.channel.itunes_summary || ''
-    podcast["pub_date"] = feed.channel.pubDate || ''
-    podcast["slug"] = ''
+    podcast["last_build_date"] = feed.channel.lastBuildDate 
+    podcast["author_name"] = feed.channel.itunes_author 
+    podcast["description"] = feed.channel.description 
+    podcast["language"] = feed.channel.language 
+    podcast["itunes_summary"] = feed.channel.itunes_summary 
+    podcast["pub_date"] = feed.channel.pubDate 
+    podcast["slug"] = nil
     # we can extraxt text from xml using approach below
     # basic use the poddracer script but replace when neede
     # make sure we register namespcaes
