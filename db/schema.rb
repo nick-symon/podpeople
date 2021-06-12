@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_03_184541) do
+ActiveRecord::Schema.define(version: 2021_06_12_191038) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,20 +67,20 @@ ActiveRecord::Schema.define(version: 2021_06_03_184541) do
   end
 
   create_table "podcasts", id: :text, force: :cascade do |t|
-    t.text "subtitle", null: false
+    t.text "subtitle"
     t.text "rss_feed_link", null: false
-    t.text "link", null: false
-    t.text "itunes_categories", null: false, array: true
-    t.text "image_url", null: false
-    t.text "image_title", null: false
+    t.text "link"
+    t.text "itunes_categories", array: true
+    t.text "image_url"
+    t.text "image_title"
     t.text "last_build_date"
-    t.text "author_name", null: false
-    t.text "description", null: false
-    t.text "language", null: false
+    t.text "author_name"
+    t.text "description"
+    t.text "language"
     t.text "title", null: false
-    t.text "slug", null: false
-    t.text "itunes_subtitle", null: false
-    t.text "itunes_summary", null: false
+    t.text "slug"
+    t.text "itunes_subtitle"
+    t.text "itunes_summary"
     t.text "pub_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
