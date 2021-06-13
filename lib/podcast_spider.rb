@@ -20,6 +20,7 @@ class PodcastSpider < Kimurai::Base
   def self.open_spider
     @@podcast_ids = Podcast.pluck(:id)
     @@podcasts_added = []
+    @@podcasts_rejected = 0
   end
 
   def parse(response, url, data: {})
@@ -55,6 +56,7 @@ class PodcastSpider < Kimurai::Base
       id = strip_id_from_link(link['href'])
       url = "https://itunes.apple.com/lookup?id=#{id}"
       if @@podcast_ids.include?(id)
+        @@podcasts_rejected += 1
         return 
       end
       browser.visit(url) 
@@ -109,6 +111,7 @@ class PodcastSpider < Kimurai::Base
 
   def self.close_spider
     puts "#{@@podcasts_added.count} podcasts added"
+    puts "#{@@podcasts_rejected} podcasts rejected"
   end
 
 end
