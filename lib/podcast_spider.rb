@@ -1,11 +1,13 @@
 require 'rss'
 require 'kimurai'
+require 'open-uri'
 
 class PodcastSpider < Kimurai::Base
   @engine = :mechanize
   @start_urls = ["https://podcasts.apple.com/us/genre/podcasts/id26"]
   @config = {
-    retry_request_errors: [OpenURI::HTTPError],
+    skip_request_errors: [{ error: RuntimeError, message: "#<OpenURI::HTTPError: 404 Not Found>" }],
+    retry_request_errors: [{ error: OpenURI::HTTPError, skip_on_failure: true }],
     before_request: {
       # Change user agent before each request:
       # change_user_agent: true,
@@ -14,7 +16,7 @@ class PodcastSpider < Kimurai::Base
       # Clear all cookies and set default cookies (if provided) before each request:
       clear_and_set_cookies: true,
       # Process delay before each request:
-      delay: 1..5
+      # delay: 1..5
     }
   }
   
@@ -86,7 +88,11 @@ class PodcastSpider < Kimurai::Base
   end
 
   def parse_rss(url:, **data)
-    feed = RSS::Parser.parse(url, do_validate=false)
+    begin
+      feed = RSS::Parser.parse(url, do_validate=false)
+    rescue RSS::Error, OpenURI::HTTPError, SocketError, Errno::ECONNRESET, Timeout::Error, RuntimeError
+      return
+    end
     podcast = {}
     podcast["id"] = data[:id]
     podcast["title"] = feed.channel.title 
@@ -110,7 +116,9 @@ class PodcastSpider < Kimurai::Base
     # note that name spacing doesn't currently work and a lot of attirubres aren't getting picked up
     # puts podcast
     p = Podcast.create(podcast)
-    @@podcasts_added << p
+    if p.persisted?
+      @@podcasts_added << p
+    end
   end
 
   def self.close_spider
