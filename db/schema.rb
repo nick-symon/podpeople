@@ -10,24 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_12_191038) do
+ActiveRecord::Schema.define(version: 2021_06_14_225915) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "episodes", primary_key: "guid", id: :text, force: :cascade do |t|
-    t.text "itunes_season", null: false
-    t.text "itunes_episode", null: false
+    t.text "itunes_season"
+    t.text "itunes_episode"
     t.text "published_date"
-    t.text "link", null: false
-    t.text "description", null: false
-    t.text "duration", null: false
+    t.text "link"
+    t.text "description"
+    t.text "duration"
     t.text "enclosure_type", null: false
     t.text "enclosure_url", null: false
     t.text "title", null: false
-    t.text "itunes_summary", null: false
+    t.text "itunes_summary"
     t.text "itunes_subtitle", null: false
-    t.text "slug", null: false
+    t.text "slug"
     t.text "podcast_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
