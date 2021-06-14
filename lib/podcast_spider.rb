@@ -5,7 +5,7 @@ class PodcastSpider < Kimurai::Base
   @engine = :mechanize
   @start_urls = ["https://podcasts.apple.com/us/genre/podcasts/id26"]
   @config = {
-    retry_request_errors: [Net::ReadTimeout],
+    retry_request_errors: [OpenURI::HTTPError],
     before_request: {
       # Change user agent before each request:
       # change_user_agent: true,
@@ -14,7 +14,7 @@ class PodcastSpider < Kimurai::Base
       # Clear all cookies and set default cookies (if provided) before each request:
       clear_and_set_cookies: true,
       # Process delay before each request:
-      # delay: 1..5
+      delay: 1..5
     }
   }
   
@@ -60,9 +60,9 @@ class PodcastSpider < Kimurai::Base
       url = "https://itunes.apple.com/lookup?id=#{id}"
       if @@podcast_ids.include?(id)
         @@podcasts_rejected += 1
-        return 
+        next
       end
-      sleep(4)
+      # sleep(4)
       browser.visit(url) 
       # browser.visit(url) unless @@podcast_ids.include?(id)
       parse_lookup(browser.current_response, url:url, **{id:id})
