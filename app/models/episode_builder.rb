@@ -19,26 +19,21 @@ class EpisodeBuilder
   end
 
   def build_episodes
-    # probably want a step here where we delete all non-favorited episodes before rebuilding
     @feed.items.each do | item |
-      ep_hash = {}
-      ep_hash[ "guid" ] = item.guid.content
-      ep_hash[ "published_date" ] = item.pubDate
-      ep_hash[ "link" ] = item.link
-      ep_hash[ "description" ] = item.description
-      ep_hash[ "duration" ] = item.itunes_duration&.content
-      ep_hash[ "enclosure_type" ] = item.enclosure&.type
-      ep_hash[ "enclosure_url" ] = item.enclosure.url
-      ep_hash[ "title" ] = item.title
-      ep_hash[ "itunes_summary" ] = item.itunes_summary
-      ep_hash[ "itunes_subtitle" ] = item.itunes_subtitle
-      ep_hash[ "itunes_season" ] = item.itunes_season
-      ep_hash[ "itunes_episode" ] = item.itunes_episode
-      ep_hash[ "podcast_id" ] = @podcast_id
-      begin
-        Episode.find_or_create_by!(ep_hash)
-      rescue ActiveRecord::RecordInvalid
-        next
+      Episode.find_or_create_by(guid: item.guid.content) do |e|
+        e.guid = item.guid.content
+        e.published_date = item.pubDate
+        e.link = item.link
+        e.description = item.description
+        e.duration = item.itunes_duration&.content
+        e.enclosure_type = item.enclosure&.type
+        e.enclosure_url = item.enclosure.url
+        e.title = item.title
+        e.itunes_summary = item.itunes_summary
+        e.itunes_subtitle = item.itunes_subtitle
+        e.itunes_season = item.itunes_season
+        e.itunes_episode = item.itunes_episode
+        e.podcast_id = @podcast_id
       end
     end
   end
