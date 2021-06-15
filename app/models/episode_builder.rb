@@ -28,10 +28,12 @@ class EpisodeBuilder
       ep_hash[ "description" ] = item.description
       ep_hash[ "duration" ] = item.itunes_duration&.content
       ep_hash[ "enclosure_type" ] = item.enclosure&.type
-      ep_hash[ "enclosure_url" ] = item.enclosure&.url
+      ep_hash[ "enclosure_url" ] = item.enclosure.url
       ep_hash[ "title" ] = item.title
       ep_hash[ "itunes_summary" ] = item.itunes_summary
       ep_hash[ "itunes_subtitle" ] = item.itunes_subtitle
+      ep_hash[ "itunes_season" ] = item.itunes_season
+      ep_hash[ "itunes_episode" ] = item.itunes_episode
       ep_hash[ "podcast_id" ] = @podcast_id
       begin
         Episode.find_or_create_by!(ep_hash)
