@@ -1,12 +1,26 @@
 require 'rss'
 require 'open-uri'
 
-module EpisodeBuilder
-  def self.build_episode(rss, podcast_id)
-    episode_arr = []
-    link = URI.open(rss)
-    feed = RSS::Parser.parse(rss, do_validate=false)
-    feed.items.each do | item |
+class EpisodeBuilder
+  attr_accessor :rss, :podcast_id
+
+  def initialize(rss_link, podcast_id)
+    @link = URI.open(rss_link)
+    @feed = RSS::Parser.parse(@link, do_validate=false) 
+    @podcast_id = podcast_id
+  end
+
+  def count
+    @feed.items.count
+  end
+
+  def build_episodes?
+    Podcast.find(@podcast_id).episodes.count != self.count
+  end
+
+  def build_episodes
+    # probably want a step here where we delete all non-favorited episodes before rebuilding
+    @feed.items.each do | item |
       ep_hash = {}
       ep_hash[ "guid" ] = item.guid.content
       ep_hash[ "published_date" ] = item.pubDate
@@ -18,10 +32,8 @@ module EpisodeBuilder
       ep_hash[ "title" ] = item.title
       ep_hash[ "itunes_summary" ] = item.itunes_summary
       ep_hash[ "itunes_subtitle" ] = item.itunes_subtitle
-      ep_hash[ "podcast_id" ] = podcast_id
-      e = Episode.find_or_initialize_by(ep_hash)
-      episode_arr << e
+      ep_hash[ "podcast_id" ] = @podcast_id
+      Episode.find_or_create_by(ep_hash)
     end
-    episode_arr
   end
 end
