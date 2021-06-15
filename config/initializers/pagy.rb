@@ -179,3 +179,4 @@
 
 # Default i18n key
 # Pagy::VARS[:i18n_key] = 'pagy.item_name'   # default
+require 'pagy/extras/array'
