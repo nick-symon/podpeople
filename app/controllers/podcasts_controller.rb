@@ -16,9 +16,10 @@ class PodcastsController < ApplicationController
 
   def show 
     # update and eager load addt'l associations on pcast
-    @podcast = Podcast.includes(:episodes, :reviews).find(params[:id])
+    @podcast = Podcast.includes(:reviews).find(params[:id])
     # add addt'l instance variables for addt'l associations
-    @episode_pagy, @episodes = pagy(@podcast.episodes, page_param: :page_episodes)
+    episode_array = EpisodeBuilder.build_episode(@podcast.rss_feed_link,@podcast.id)
+    @episode_pagy, @episodes = pagy_array(episode_array, page_param: :page_episodes)
     @review_pagy, @reviews = pagy(@podcast.reviews, page_param: :page_reviews)
     
     if user_signed_in?
