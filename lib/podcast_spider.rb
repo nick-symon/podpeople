@@ -88,7 +88,7 @@ class PodcastSpider < Kimurai::Base
   def parse_rss(url:, **data)
     begin
       feed = RSS::Parser.parse(url, do_validate=false)
-    rescue RSS::Error, OpenURI::HTTPError, SocketError, Errno::ECONNRESET, Timeout::Error, RuntimeError
+    rescue RSS::Error, OpenURI::HTTPError, SocketError, Errno::ECONNRESET, Timeout::Error, RuntimeError, OpenSSL::SSL::SSLError
       @@errors += 1
       return
     end
